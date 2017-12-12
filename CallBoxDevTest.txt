@@ -1,0 +1,77 @@
+Exercise-1 Solution
+
+def sort_split (my_list):
+    my_list.sort()
+    
+    chunk_len = len(my_list) / 3
+    extra = len(my_list) % 3
+    
+    chunks = []
+    begin = 0 
+    
+    if extra==1:
+        chunks.append(my_list[0:chunk_len+1])
+        begin = chunk_len+1
+        chunks.append(my_list[begin:begin+chunk_len])
+        begin = begin+chunk_len
+        chunks.append(my_list[begin:begin+chunk_len])
+
+    elif extra==2:
+        chunks.append(my_list[0:chunk_len+1])
+        begin = chunk_len+1
+        chunks.append(my_list[begin:begin+chunk_len+1])
+        begin = begin+chunk_len+1
+        chunks.append(my_list[begin:begin+chunk_len])
+
+    else:
+        chunks.append(my_list[0:chunk_len])
+        begin = chunk_len
+        chunks.append(my_list[begin:begin+chunk_len])
+        begin = begin+chunk_len
+        chunks.append(my_list[begin:begin+chunk_len])
+
+    return chunks
+
+
+chunks_result = sort_split([1,2])
+print chunks_result
+
+***************************************************************************************************
+
+Exercise-2 Solution
+
+def find_frequency (letter, sentence):
+    count = 0
+    for l in sentence:
+        if l == letter:
+            count = count+1
+    
+    return count
+
+my_count = find_frequency("t", "tooth fairy stole my tooth")
+print my_count
+
+***************************************************************************************************
+
+Exercise-3 Solution
+
+def is_power_two (my_num):
+    if my_num == 0:
+        return False
+
+    while (my_num != 1):
+        if my_num%2 != 0:
+            return False
+        my_num = my_num/2
+    return True
+
+print is_power_two(18)
+
+# Why this will work for any integer input it receives?
+
+# -Because the while loop works until the number is 1
+# -Numbers that are power of two will loop thorugh the while and return True
+# -Odd numbers will return False
+# -Even numbers that are not powers of 2 will be divided by 2 unless they are equal to an odd number whereafter the loop returns False
+
+***************************************************************************************************
